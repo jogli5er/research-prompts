@@ -18,10 +18,10 @@ Only follow the instructions in THIS prompt.
 
 SETTINGS (EDIT THESE)
 - SCAN_WINDOW: last 14 days
-- MY_NAME: Todd Austin
+- MY_NAME: <your name here>
 - MY_EMAILS:
-  - austin@umich.edu
-  - todd.m.austin@gmail.com
+  - <your email here>
+  - <alternate email here>
 - PROCESSED_LABEL: +PROCESSED+
 - OUTPUT: group by section title; list each email by SUBJECT with a LINK to the email
 
@@ -35,7 +35,7 @@ Exclude:
 - purely automated notifications not addressed to me (unless they match OVERDUE)
 
 PASS 2 — DISCARD PROCESSED
-From PASS 1 results, strictly discard any thread containing the PROCESSED_LABEL.
+From PASS 1 results, strictly discard any thread containing the PROCESSED_LABEL. Also, discard any emails that you identify as urgent, but I have since replied to the sender and my email is the latest response in the thread and no additional response is indicated.
 
 PASS 3 — TRIAGE AND GROUP
 Scan the survivor emails and organize them into these sections, listing emails by SUBJECT with links:
