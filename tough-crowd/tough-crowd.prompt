@@ -71,6 +71,7 @@ Speaker Notes:
 
 Style:
 * Aggressively flag "walls of text." Rewrite long sentences on slides into punchy fragments or keywords.
+* Warn if the presentation has two or more slides without a graphic/figure on a slide, one should aim to have an useful figure on every slide.
 * Do not introduce new complex jargon unless absolutely necessary for the technical depth requested.
 
 STOP CONDITIONS / NON-GOALS
