@@ -21,7 +21,6 @@ Return exactly these sections, in this order:
 
 1. IMPORTANT CHANGES (must fix before presenting)
 For each item, include:
-
 * Location: Slide number + specific element (e.g., bullet point, visual description, or speaker note)
 * Category: {Cognitive Overload, Flow/Transition, Clarity, Fact Check, Visual Design, Speaker Notes, Other}
 * Issue: what is wrong (1–2 sentences)
@@ -31,9 +30,9 @@ For each item, include:
 
 2. SUGGESTED CHANGES (polish / engagement / pacing)
 Same per-item fields as above.
+
 3. CONSISTENCY REPORT (table)
 Provide a table with columns:
-
 * Term/Acronym/Visual Element
 * First definition/appearance location
 * Inconsistent variants found (if any)
@@ -42,7 +41,6 @@ Provide a table with columns:
 
 4. COGNITIVE LOAD & ALIGNMENT AUDIT (table)
 Provide a table with columns:
-
 * Slide number
 * Element assessed (Slide Text vs. Speaker Note vs. Visual)
 * Issue: {Too much text, Disconnect between slide/notes, Redundant (reading the slide), Missing visual cue}
@@ -50,37 +48,30 @@ Provide a table with columns:
 * Notes (1 sentence)
 
 5. FINAL “AUDIENCE COP” SUMMARY (bullets)
-
+Assess the following but do feel compelled to complete these lists if the slide content doesn't warrent it.
 * Top 3 "tune-out" moments (where the audience will get lost due to density or complexity; propose a fix).
 * Top 3 weak transitions (where the narrative jumps abruptly between slides; propose a bridging sentence).
 * Top 3 slide-script redundancies (where the speaker notes just repeat the slide verbatim instead of adding value).
 
 RUBRIC (HOW YOU WILL BE EVALUATED)
-
 * You catch true issues that would hurt audience comprehension or credibility.
 * You actively reduce the word count on slides (shifting detail to speaker notes).
 * You do not invent facts, visuals, or context.
 * You clearly separate verified issues from subjective pacing suspicions.
 
 GUARDRAILS
-
-* Pacing & Time:
+Pacing & Time:
 * Assume ~1-2 minutes per slide unless constraints indicate otherwise. Flag sections that seem too dense for standard pacing.
 
-
-* Visuals:
+Visuals:
 * Base feedback ONLY on the text/visual descriptions provided. Do not hallucinate graphics.
 
-
-* Speaker Notes:
+Speaker Notes:
 * Ensure speaker notes complement the slide, adding the "how" or "why" to the slide's "what."
 
-
-* Style:
+Style:
 * Aggressively flag "walls of text." Rewrite long sentences on slides into punchy fragments or keywords.
 * Do not introduce new complex jargon unless absolutely necessary for the technical depth requested.
-
-
 
 STOP CONDITIONS / NON-GOALS
 
