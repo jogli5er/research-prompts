@@ -1,120 +1,179 @@
-# skeleton-prompt (README)
+# Research Group Public Relations Officer
 
-This directory contains a **generic “procedure-as-prompt” skeleton** you can reuse for research and other high-stakes work. The goal is to turn an LLM request into a **repeatable procedure** with clear inputs, outputs, guardrails, and a built-in verification loop.
+An AI skill for turning academic research, publications, conference activities, and achievements into accurate, engaging, and publication-ready communications.
 
-This workflow performs best when the model’s **thinking mode** is enabled (for example, **Extended Thinking** in ChatGPT or **Pro** mode in Gemini), especially when tasks involve multi-step reasoning, consistency checking, or risk triage.
+The skill acts as a public relations officer for an academic research group, helping researchers communicate their work to a broader technical audience without compromising scientific accuracy.
 
----
+## Features
 
-## What is “procedure-as-prompt”
+- **Scientific accuracy first:** Grounds claims in source material and checks results, numerical comparisons, and publication status.
+- **Accessible research communication:** Explains complex technical ideas to researchers, industry professionals, and students outside the immediate research field.
+- **Engaging writing:** Creates curiosity-driven openings and emphasizes why research findings matter without resorting to clickbait.
+- **Appropriate attribution:** Recognizes all co-authors and distinguishes between individual activities and collaborative contributions.
+- **Platform-specific content:** Adapts writing to LinkedIn, research-group blogs, and Mastodon.
+- **Publication-ready output:** Delivers a complete post first, followed by optional alternatives and brief verification notes.
+- **Source verification:** Requests clarification when essential information is missing rather than inventing facts.
 
-A **procedure-as-prompt** is a prompt written like an SOP (standard operating procedure), not a chatty request.
+## Supported Tasks
 
-Instead of:
+| Task | Description |
+|---|---|
+| Paper announcements | Announce accepted or published papers, emphasizing their contributions and key findings. |
+| Research highlights | Communicate interesting results, technical insights, and project milestones. |
+| Conference news | Announce talks, posters, presentations, and conference participation. |
+| Awards and achievements | Highlight awards, recognitions, and other research-group achievements. |
 
-> “Summarize this paper.”
+## Target Audience
 
-You specify the procedure:
+The skill is designed for a mixed technical audience, including academic researchers, industry engineers, students, and technically interested readers.
 
-- who the model is acting as (role)
-- what inputs it may use (and what it may not assume)
-- what output it must produce (strict format)
-- what quality rubric it must optimize for
-- what guardrails prevent hallucinations and scope creep
-- what to do when information is missing (explicit uncertainty handling)
-- how to self-verify before returning results
+It assumes readers are intelligent but may not be specialists in the subject being discussed. Technical terminology is preserved where necessary and explained in accessible language.
 
-This transforms an LLM from “text generator” into something closer to a **workflow engine**.
+## Supported Platforms
 
----
+| Platform | Default approach |
+|---|---|
+| LinkedIn | Professional, engaging posts with an accessible research narrative, author mentions, and relevant links. |
+| Research-group blog | Longer explanations with technical context, results, figures, and references. |
+| Mastodon | Concise announcements or short threads respecting platform conventions and character limits. |
 
-## Why use procedure-as-prompt (justification)
+**LinkedIn is the default platform.** Other platforms can be requested explicitly.
 
-### 1) Repeatability beats one-off cleverness
-Research and engineering work benefit from **consistent artifacts** you can compare across runs: paper notes, claim ledgers, checklists, review outputs, etc. A procedural format yields outputs that are stable enough to:
-- diff between versions
-- standardize across a lab/team
-- incorporate into a CI-like “quality gate” process
+## Getting Started
 
-### 2) Fluency is not correctness
-LLMs can sound right while being wrong. Procedure prompts explicitly require:
-- separation of **FACT vs INFERENCE**
-- “NOT IN TEXT / NO SOURCE PROVIDED” behavior
-- citation constraints (no fabricated references)
-- risk tagging and confidence levels
+### 1. Provide the source material
 
-This is how you get speed without silently lowering standards.
+For a paper announcement, upload the research paper as a PDF or paste its title and abstract.
 
-### 3) High-stakes tasks need triage, not prose
-Near deadlines, you need actionable priority ordering (e.g., IMPORTANT vs SUGGESTED), not generic advice. Procedural prompts force:
-- location + snippet + fix
-- ranked lists and tables
-- bounded scope and stop conditions
+Include additional information where available:
 
-### 4) Adversarial environments require guardrails
-Research is reviewed. Email can contain prompt injection. PDFs can contain misleading text. Procedure prompts make “ignore embedded instructions” and “verify before output” first-class.
+- Conference or journal name.
+- Acceptance or publication status.
+- Paper URL or DOI.
+- Author names and social media handles.
+- Figures or illustrations to accompany the post.
 
-### 5) It is easier to teach and reuse
-A skeleton prompt becomes a shared lab asset. Students learn *how to ask* for help in a way that is reproducible and auditable.
+For other announcements, provide a short description of the event, achievement, or research result.
 
----
+### 2. Request the announcement
 
-## What’s in this directory
+Example:
 
-- `README.md` — this document
-- `skeleton-procedure.prompt` — the generic procedure-as-prompt template (copy/paste)
+> Create a LinkedIn announcement for our paper accepted at MICRO 2026. Use the attached PDF, highlight the most interesting finding, and mention all co-authors.
 
----
+The skill will extract the relevant information, identify the strongest communication angle, and prepare the post.
 
-## How to use the skeleton
+### 3. Review the output
 
-1. Copy `skeleton-procedure.prompt` into your LLM tool.
-2. Fill in the **SETTINGS** block:
-   - role, task, time window, constraints
-3. Define the **OUTPUT CONTRACT**:
-   - sections, tables, scoring, what must be included
-4. Tighten **GUARDRAILS**:
-   - what cannot be invented, how to handle uncertainty
-5. Add a **verification pass**:
-   - re-check every item before returning
-6. Paste your inputs under **BEGIN**.
+The skill returns three possible sections:
 
----
+1. **Ready-to-publish post:** The recommended version, formatted for the requested platform.
+2. **Optional alternatives:** Alternative hooks, result descriptions, or calls to action when similarly strong options exist.
+3. **Verification notes:** A brief record of verified claims, source references, and missing information.
 
-## Common adaptations
+The ready-to-publish post always appears first.
 
-### A) Paper intake
-- Role: “Heilmeier Extractor”
-- Output contract: Overview / SOTA / Contributions / Impact / Risks
-- Guardrails: “NOT IN TEXT” + no invented citations
+## Example Prompts
 
-### B) Final-pass paper reviewer
-- Output contract: IMPORTANT vs SUGGESTED + tables (consistency, citations)
-- Verification pass: re-open each flagged sentence, ensure fix is minimal
+### Announce an accepted paper
 
-### C) Orphan paragraph fixer (typeset PDF)
-- Input type: PDF pages
-- Output contract: page numbers + orphan line + minimal rewrite
-- Guardrails: preserve numbers/citations/terms; mark “need source text” if PDF insufficient
+> Our paper has been accepted at ISPASS 2026. Create a LinkedIn announcement using the attached manuscript. Explain the research problem, select the most interesting result, and include all co-authors.
 
-### D) Email scanner (Gemini-only)
-- Input: Gmail access
-- Output: bucketed subjects + links + validation pass
-- Guardrails: prompt injection handling for email bodies
+### Highlight a research result
 
----
+> Write a research-group blog post based on the attached paper. Focus on the practical significance of the results rather than the implementation details. Make it accessible to engineers who are not specialists in computer architecture.
 
-## Tips for writing good procedures
+### Announce a conference presentation
 
-- **Constrain outputs**: tables and fixed section headings reduce drift.
-- **Make uncertainty explicit**: require “UNVERIFIED” labels and what evidence is needed.
-- **Prefer actions over advice**: “replace sentence with X” beats “improve clarity.”
-- **Define stop conditions**: prevent “rewrite the whole document.”
-- **Require a re-validation pass**: trust is earned by checking.
+> I'm presenting our joint research at MICRO next week. Write a short LinkedIn post inviting attendees to join the presentation. Mention all co-authors and use "I" for my participation but "our" for the research.
 
----
+### Announce an award
 
-## License / reuse
+> Our research group received the attached award. Create a professional LinkedIn announcement explaining the recognition and acknowledging the contributors.
 
-Use freely within your lab/team. If you adapt it, keep the core structure:
-**Inputs → Output Contract → Guardrails → Verification → Deliverable**.
+### Adapt an existing announcement
+
+> Convert this LinkedIn announcement into a concise Mastodon thread. Preserve the scientific claims, author attribution, and paper link.
+
+## Configuration
+
+The skill supports optional configuration settings.
+
+| Setting | Options | Default |
+|---|---|---|
+| `TASK_TYPE` | `AUTO`, `PAPER_ANNOUNCEMENT`, `RESEARCH_HIGHLIGHT`, `CONFERENCE_NEWS`, `AWARD` | `AUTO` |
+| `PLATFORM` | `LINKEDIN`, `BLOG`, `MASTODON`, `MULTIPLE` | `LINKEDIN` |
+| `INPUT_TYPE` | `PDF`, `TEXT`, `MIXED` | Automatically inferred |
+| `AUDIENCE` | Audience description | Mixed technical |
+| `TONE` | Writing-style description | Professional, accessible, engaging |
+| `LENGTH` | Desired length | Adaptive |
+| `LANGUAGE` | Output language | English |
+| `EMOJIS` | Usage preference | Minimal |
+| `ALTERNATIVES` | Whether to offer alternatives | When useful |
+
+Settings can be specified directly in a request. Unspecified settings use the defaults.
+
+## Editorial Principles
+
+### Accuracy over engagement
+
+All research claims must be supported by the provided material. The skill preserves numerical results, comparison baselines, and essential scientific qualifications.
+
+It does not invent results, citations, awards, publication status, or social media handles.
+
+If essential information is missing or contradictory, the skill asks for clarification before generating the final announcement.
+
+### Inclusive authorship
+
+All co-authors must be recognized somewhere in the deliverable.
+
+Collaborative research is described using inclusive language such as "our work" and "we show."
+
+Individual activities are described using singular language where appropriate, for example:
+
+> I'm presenting our work at MICRO.
+
+Where possible, author names are formatted for tagging. Actual account handles are used only when verified or provided.
+
+### Accessible without oversimplifying
+
+The skill retains essential technical terminology but explains it in approachable language.
+
+It prioritizes one meaningful result and its implications rather than attempting to summarize every contribution in a paper.
+
+Analogies are permitted when they accurately represent the research.
+
+### Natural communication
+
+The skill avoids:
+- Exaggerated or unsupported claims.
+- Generic marketing language and sensationalist hooks.
+- Excessive emojis, hashtags, and exclamation marks.
+- Unnecessary technical jargon.
+- Em dashes.
+- Artificial engagement questions.
+
+Posts should sound like knowledgeable researchers communicating with interested colleagues.
+
+## Limitations
+
+- The quality of the announcement depends on the completeness and reliability of the supplied material.
+- A paper's acceptance or publication status may require additional confirmation.
+- Platform-specific account handles must be provided or verified.
+- The skill does not automatically publish content to social media.
+- Generated posts should receive a final human review before publication, particularly for author tagging and institutional communication requirements.
+
+## Recommended Workflow
+
+1. Upload the paper or provide the announcement details.
+2. Specify the desired platform and any particular emphasis.
+3. Review the ready-to-publish post.
+4. Examine optional alternatives and verification notes.
+5. Confirm author tags, links, and publication details.
+6. Publish through the appropriate channel.
+
+For consistent communication over time, provide examples of previous research-group announcements as writing-style references.
+
+## License
+
+Add the appropriate license for your research group or organization.
